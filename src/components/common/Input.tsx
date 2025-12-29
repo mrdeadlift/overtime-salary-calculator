@@ -25,13 +25,32 @@ export const Input: React.FC<InputProps> = ({
   error,
   disabled = false,
 }) => {
+  const [isFocused, setIsFocused] = React.useState(false);
+  const [wasCleared, setWasCleared] = React.useState(false);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (type === 'number') {
-      onChange(e.target.value === '' ? 0 : Number(e.target.value));
+      const rawValue = e.target.value;
+      if (rawValue === '') {
+        setWasCleared(true);
+        onChange(0);
+        return;
+      }
+      setWasCleared(false);
+      let normalizedValue = rawValue;
+      if (/^0\d/.test(rawValue)) {
+        normalizedValue = rawValue.replace(/^0+/, '');
+      } else if (/^-0\d/.test(rawValue)) {
+        normalizedValue = `-${rawValue.replace(/^-0+/, '')}`;
+      }
+      onChange(Number(normalizedValue));
     } else {
       onChange(e.target.value);
     }
   };
+
+  const inputValue =
+    type === 'number' && isFocused && wasCleared && Number(value) === 0 ? '' : value;
 
   return (
     <div className="w-full">
@@ -39,8 +58,17 @@ export const Input: React.FC<InputProps> = ({
       <div className="relative">
         <input
           type={type}
-          value={value}
+          value={inputValue}
           onChange={handleChange}
+          onFocus={(e) => {
+            setIsFocused(true);
+            if (type === 'number' && !disabled && Number(value) === 0) {
+              e.currentTarget.select();
+            }
+          }}
+          onBlur={() => {
+            setIsFocused(false);
+          }}
           placeholder={placeholder}
           min={min}
           step={step}
