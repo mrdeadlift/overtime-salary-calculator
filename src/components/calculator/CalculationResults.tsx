@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 import type { SalaryCalculationResult } from "../../types/salary";
 import { formatCurrency } from "../../utils/formatters";
 import { Card } from "../common/Card";

@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import type { SalaryInput, SalaryCalculationResult } from "../../types/salary";
+import type React from "react";
+import { useState } from "react";
 import { useSalaryCalculator } from "../../hooks/useSalaryCalculator";
+import type { SalaryCalculationResult, SalaryInput } from "../../types/salary";
+import { Button } from "../common/Button";
 import { Card } from "../common/Card";
 import { Input } from "../common/Input";
-import { Button } from "../common/Button";
 import { AllowanceInputSection } from "./AllowanceInputSection";
-import { OvertimeInputSection } from "./OvertimeInputSection";
 import { BonusInputSection } from "./BonusInputSection";
 import { CalculationResults } from "./CalculationResults";
+import { OvertimeInputSection } from "./OvertimeInputSection";
 
 interface SalaryInputFormProps {
   onSave?: (input: SalaryInput, result: SalaryCalculationResult, name: string) => void;

@@ -1,7 +1,7 @@
-import React from "react";
+import type React from "react";
+import { formatCurrency } from "../../utils/formatters";
 import { Card } from "../common/Card";
 import { Input } from "../common/Input";
-import { formatCurrency } from "../../utils/formatters";
 
 interface BonusInputSectionProps {
   summerBonus: number;

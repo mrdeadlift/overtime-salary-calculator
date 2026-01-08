@@ -1,8 +1,8 @@
-import React from "react";
+import type React from "react";
 import type { Allowance } from "../../types/salary";
+import { Button } from "../common/Button";
 import { Card } from "../common/Card";
 import { Input } from "../common/Input";
-import { Button } from "../common/Button";
 
 interface AllowanceInputSectionProps {
   allowances: Allowance[];

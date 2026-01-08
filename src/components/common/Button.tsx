@@ -1,10 +1,11 @@
-import React from "react";
+import type React from "react";
 
 interface ButtonProps {
   variant?: "primary" | "secondary" | "danger";
   size?: "sm" | "md" | "lg";
   onClick: () => void;
   children: React.ReactNode;
+  type?: "button" | "submit" | "reset";
   disabled?: boolean;
   className?: string;
 }
@@ -14,6 +15,7 @@ export const Button: React.FC<ButtonProps> = ({
   size = "md",
   onClick,
   children,
+  type = "button",
   disabled = false,
   className = "",
 }) => {
@@ -36,6 +38,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
+      type={type}
       onClick={onClick}
       disabled={disabled}
       className={`${baseStyles} ${variantStyles[variant]} ${

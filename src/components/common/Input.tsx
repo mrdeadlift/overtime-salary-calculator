@@ -1,4 +1,5 @@
-import React from "react";
+import type { ChangeEvent, FC } from "react";
+import { useId, useState } from "react";
 
 interface InputProps {
   type: "text" | "number";
@@ -6,6 +7,7 @@ interface InputProps {
   onChange: (value: string | number) => void;
   placeholder?: string;
   label?: string;
+  id?: string;
   min?: number;
   step?: number;
   suffix?: string;
@@ -13,22 +15,25 @@ interface InputProps {
   disabled?: boolean;
 }
 
-export const Input: React.FC<InputProps> = ({
+export const Input: FC<InputProps> = ({
   type,
   value,
   onChange,
   placeholder,
   label,
+  id,
   min,
   step = 1,
   suffix,
   error,
   disabled = false,
 }) => {
-  const [isFocused, setIsFocused] = React.useState(false);
-  const [wasCleared, setWasCleared] = React.useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const [wasCleared, setWasCleared] = useState(false);
+  const generatedId = useId();
+  const inputId = id ?? generatedId;
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (type === "number") {
       const rawValue = e.target.value;
       if (rawValue === "") {
@@ -54,9 +59,14 @@ export const Input: React.FC<InputProps> = ({
 
   return (
     <div className="w-full">
-      {label && <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>}
+      {label && (
+        <label htmlFor={inputId} className="block text-sm font-medium text-gray-700 mb-1">
+          {label}
+        </label>
+      )}
       <div className="relative">
         <input
+          id={inputId}
           type={type}
           value={inputValue}
           onChange={handleChange}

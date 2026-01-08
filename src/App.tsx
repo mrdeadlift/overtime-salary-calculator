@@ -22,6 +22,7 @@ function App() {
         <div className="container mx-auto px-4">
           <nav className="flex space-x-8" aria-label="Tabs">
             <button
+              type="button"
               onClick={() => setActiveTab("calculator")}
               className={`
                 py-4 px-1 border-b-2 font-medium text-sm transition-colors
@@ -35,6 +36,7 @@ function App() {
               💰 計算
             </button>
             <button
+              type="button"
               onClick={() => setActiveTab("comparison")}
               className={`
                 py-4 px-1 border-b-2 font-medium text-sm transition-colors relative

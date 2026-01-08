@@ -1,11 +1,11 @@
 import { useCallback } from "react";
-import type { SalaryCalculationResult, SalaryInput } from "../types/salary";
 import {
   calculateHourlyRate,
   calculateMonthlyGross,
   calculateMonthlyOvertimePay,
   calculateSalary,
 } from "../domain/salaryCalculator";
+import type { SalaryCalculationResult, SalaryInput } from "../types/salary";
 
 export const useSalaryCalculator = () => {
   const calculateHourlyRateCallback = useCallback(calculateHourlyRate, []);

@@ -1,8 +1,8 @@
-import React from "react";
-import { Card } from "../common/Card";
-import { Input } from "../common/Input";
+import type React from "react";
 import { useSalaryCalculator } from "../../hooks/useSalaryCalculator";
 import { formatCurrency } from "../../utils/formatters";
+import { Card } from "../common/Card";
+import { Input } from "../common/Input";
 
 interface OvertimeInputSectionProps {
   hours: number;
