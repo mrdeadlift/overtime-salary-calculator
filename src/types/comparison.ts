@@ -1,4 +1,4 @@
-import type { SalaryInput, SalaryCalculationResult } from './salary';
+import type { SalaryInput, SalaryCalculationResult } from "./salary";
 
 export interface ComparisonPattern {
   id: string;

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 interface InputProps {
-  type: 'text' | 'number';
+  type: "text" | "number";
   value: string | number;
   onChange: (value: string | number) => void;
   placeholder?: string;
@@ -29,9 +29,9 @@ export const Input: React.FC<InputProps> = ({
   const [wasCleared, setWasCleared] = React.useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (type === 'number') {
+    if (type === "number") {
       const rawValue = e.target.value;
-      if (rawValue === '') {
+      if (rawValue === "") {
         setWasCleared(true);
         onChange(0);
         return;
@@ -39,9 +39,9 @@ export const Input: React.FC<InputProps> = ({
       setWasCleared(false);
       let normalizedValue = rawValue;
       if (/^0\d/.test(rawValue)) {
-        normalizedValue = rawValue.replace(/^0+/, '');
+        normalizedValue = rawValue.replace(/^0+/, "");
       } else if (/^-0\d/.test(rawValue)) {
-        normalizedValue = `-${rawValue.replace(/^-0+/, '')}`;
+        normalizedValue = `-${rawValue.replace(/^-0+/, "")}`;
       }
       onChange(Number(normalizedValue));
     } else {
@@ -50,7 +50,7 @@ export const Input: React.FC<InputProps> = ({
   };
 
   const inputValue =
-    type === 'number' && isFocused && wasCleared && Number(value) === 0 ? '' : value;
+    type === "number" && isFocused && wasCleared && Number(value) === 0 ? "" : value;
 
   return (
     <div className="w-full">
@@ -62,7 +62,7 @@ export const Input: React.FC<InputProps> = ({
           onChange={handleChange}
           onFocus={(e) => {
             setIsFocused(true);
-            if (type === 'number' && !disabled && Number(value) === 0) {
+            if (type === "number" && !disabled && Number(value) === 0) {
               e.currentTarget.select();
             }
           }}
@@ -75,9 +75,9 @@ export const Input: React.FC<InputProps> = ({
           disabled={disabled}
           className={`
             w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent
-            ${error ? 'border-red-500' : 'border-gray-300'}
-            ${disabled ? 'bg-gray-100 cursor-not-allowed' : 'bg-white'}
-            ${suffix ? 'pr-16' : ''}
+            ${error ? "border-red-500" : "border-gray-300"}
+            ${disabled ? "bg-gray-100 cursor-not-allowed" : "bg-white"}
+            ${suffix ? "pr-16" : ""}
           `}
         />
         {suffix && (

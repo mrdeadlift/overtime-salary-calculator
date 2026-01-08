@@ -1,13 +1,16 @@
-import { useCallback } from 'react';
+import { useCallback } from "react";
 import {
   calculateEmploymentIncomeDeduction,
   calculateIncomeTax,
   calculateResidentTax,
   calculateTaxableIncome,
-} from '../domain/taxCalculator';
+} from "../domain/taxCalculator";
 
 export const useTaxCalculator = () => {
-  const calculateEmploymentIncomeDeductionCallback = useCallback(calculateEmploymentIncomeDeduction, []);
+  const calculateEmploymentIncomeDeductionCallback = useCallback(
+    calculateEmploymentIncomeDeduction,
+    [],
+  );
   const calculateTaxableIncomeCallback = useCallback(calculateTaxableIncome, []);
   const calculateIncomeTaxCallback = useCallback(calculateIncomeTax, []);
   const calculateResidentTaxCallback = useCallback(calculateResidentTax, []);

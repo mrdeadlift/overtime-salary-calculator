@@ -1,14 +1,14 @@
-import { describe, expect, it } from 'vitest';
-import type { SalaryInput } from '../../types/salary';
-import { calculateSalary } from '../salaryCalculator';
+import { describe, expect, it } from "vitest";
+import type { SalaryInput } from "../../types/salary";
+import { calculateSalary } from "../salaryCalculator";
 
-describe('salaryCalculator', () => {
-  it('calculates annual salary breakdown from base inputs', () => {
+describe("salaryCalculator", () => {
+  it("calculates annual salary breakdown from base inputs", () => {
     const input: SalaryInput = {
       baseSalary: 300000,
       allowances: [
-        { id: 'housing', name: '住宅手当', amount: 20000, isTaxable: true },
-        { id: 'transport', name: '通勤手当', amount: 10000, isTaxable: true },
+        { id: "housing", name: "住宅手当", amount: 20000, isTaxable: true },
+        { id: "transport", name: "通勤手当", amount: 10000, isTaxable: true },
       ],
       expectedOvertimeHours: 20,
       summerBonus: 1.5,

@@ -1,19 +1,22 @@
-import React from 'react';
-import type { Allowance } from '../../types/salary';
-import { Card } from '../common/Card';
-import { Input } from '../common/Input';
-import { Button } from '../common/Button';
+import React from "react";
+import type { Allowance } from "../../types/salary";
+import { Card } from "../common/Card";
+import { Input } from "../common/Input";
+import { Button } from "../common/Button";
 
 interface AllowanceInputSectionProps {
   allowances: Allowance[];
   onChange: (allowances: Allowance[]) => void;
 }
 
-export const AllowanceInputSection: React.FC<AllowanceInputSectionProps> = ({ allowances, onChange }) => {
+export const AllowanceInputSection: React.FC<AllowanceInputSectionProps> = ({
+  allowances,
+  onChange,
+}) => {
   const addAllowance = () => {
     const newAllowance: Allowance = {
       id: crypto.randomUUID(),
-      name: '',
+      name: "",
       amount: 0,
       isTaxable: true,
     };
@@ -24,7 +27,11 @@ export const AllowanceInputSection: React.FC<AllowanceInputSectionProps> = ({ al
     onChange(allowances.filter((a) => a.id !== id));
   };
 
-  const updateAllowance = (id: string, field: keyof Allowance, value: string | number | boolean) => {
+  const updateAllowance = (
+    id: string,
+    field: keyof Allowance,
+    value: string | number | boolean,
+  ) => {
     onChange(
       allowances.map((a) =>
         a.id === id
@@ -32,8 +39,8 @@ export const AllowanceInputSection: React.FC<AllowanceInputSectionProps> = ({ al
               ...a,
               [field]: value,
             }
-          : a
-      )
+          : a,
+      ),
     );
   };
 
@@ -48,7 +55,7 @@ export const AllowanceInputSection: React.FC<AllowanceInputSectionProps> = ({ al
               <Input
                 type="text"
                 value={allowance.name}
-                onChange={(v) => updateAllowance(allowance.id, 'name', v)}
+                onChange={(v) => updateAllowance(allowance.id, "name", v)}
                 placeholder="手当名 (例: 住宅手当)"
               />
             </div>
@@ -56,7 +63,7 @@ export const AllowanceInputSection: React.FC<AllowanceInputSectionProps> = ({ al
               <Input
                 type="number"
                 value={allowance.amount}
-                onChange={(v) => updateAllowance(allowance.id, 'amount', v)}
+                onChange={(v) => updateAllowance(allowance.id, "amount", v)}
                 placeholder="金額"
                 suffix="円"
                 min={0}
@@ -72,7 +79,7 @@ export const AllowanceInputSection: React.FC<AllowanceInputSectionProps> = ({ al
         </Button>
         {allowances.length > 0 && (
           <div className="text-right text-gray-700 font-semibold pt-2 border-t">
-            手当合計: ¥{totalAllowance.toLocaleString('ja-JP')}
+            手当合計: ¥{totalAllowance.toLocaleString("ja-JP")}
           </div>
         )}
       </div>

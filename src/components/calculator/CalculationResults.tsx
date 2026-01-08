@@ -1,20 +1,26 @@
-import React from 'react';
-import type { SalaryCalculationResult } from '../../types/salary';
-import { formatCurrency } from '../../utils/formatters';
-import { Card } from '../common/Card';
+import React from "react";
+import type { SalaryCalculationResult } from "../../types/salary";
+import { formatCurrency } from "../../utils/formatters";
+import { Card } from "../common/Card";
 
 interface CalculationResultsProps {
   result: SalaryCalculationResult;
 }
 
 export const CalculationResults: React.FC<CalculationResultsProps> = ({ result }) => {
-  const takeHomeRate = (result.annualNetSalary / (result.annualGrossSalary + result.annualBonus)) * 100;
+  const takeHomeRate =
+    (result.annualNetSalary / (result.annualGrossSalary + result.annualBonus)) * 100;
 
   return (
     <div className="space-y-4">
       {/* 年間手取り額(大きく強調) */}
-      <Card title="年間手取り額" className="bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-200">
-        <p className="text-5xl font-bold text-blue-600 mb-2">{formatCurrency(result.annualNetSalary)}</p>
+      <Card
+        title="年間手取り額"
+        className="bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-200"
+      >
+        <p className="text-5xl font-bold text-blue-600 mb-2">
+          {formatCurrency(result.annualNetSalary)}
+        </p>
         <p className="text-lg text-gray-700">月額概算: {formatCurrency(result.monthlyNetSalary)}</p>
         <p className="text-sm text-gray-600 mt-2">手取り率: {takeHomeRate.toFixed(1)}%</p>
       </Card>
@@ -48,19 +54,27 @@ export const CalculationResults: React.FC<CalculationResultsProps> = ({ result }
         <div className="space-y-3">
           <div className="flex justify-between items-center py-2 border-b border-gray-200">
             <span className="text-gray-700">所得税</span>
-            <span className="font-semibold text-red-600">{formatCurrency(result.annualIncomeTax)}</span>
+            <span className="font-semibold text-red-600">
+              {formatCurrency(result.annualIncomeTax)}
+            </span>
           </div>
           <div className="flex justify-between items-center py-2 border-b border-gray-200">
             <span className="text-gray-700">住民税</span>
-            <span className="font-semibold text-red-600">{formatCurrency(result.annualResidentTax)}</span>
+            <span className="font-semibold text-red-600">
+              {formatCurrency(result.annualResidentTax)}
+            </span>
           </div>
           <div className="flex justify-between items-center py-2 border-b border-gray-200">
             <span className="text-gray-700">社会保険料</span>
-            <span className="font-semibold text-red-600">{formatCurrency(result.annualSocialInsurance)}</span>
+            <span className="font-semibold text-red-600">
+              {formatCurrency(result.annualSocialInsurance)}
+            </span>
           </div>
           <div className="flex justify-between items-center py-2 bg-red-50 px-2 rounded">
             <span className="font-bold text-gray-900">控除合計</span>
-            <span className="font-bold text-xl text-red-600">{formatCurrency(result.totalDeductions)}</span>
+            <span className="font-bold text-xl text-red-600">
+              {formatCurrency(result.totalDeductions)}
+            </span>
           </div>
         </div>
       </Card>

@@ -1,7 +1,7 @@
-import React from 'react';
-import { Card } from '../common/Card';
-import { Input } from '../common/Input';
-import { formatCurrency } from '../../utils/formatters';
+import React from "react";
+import { Card } from "../common/Card";
+import { Input } from "../common/Input";
+import { formatCurrency } from "../../utils/formatters";
 
 interface BonusInputSectionProps {
   summerBonus: number;
@@ -46,7 +46,7 @@ export const BonusInputSection: React.FC<BonusInputSectionProps> = ({
         {baseSalary > 0 && (
           <div className="bg-green-50 p-3 rounded">
             <p className="text-sm text-gray-700">
-              年間賞与総額(基本給ベース):{' '}
+              年間賞与総額(基本給ベース):{" "}
               <span className="font-bold text-green-600">{formatCurrency(totalBonus)}</span>
             </p>
             <p className="text-xs text-gray-500 mt-1">

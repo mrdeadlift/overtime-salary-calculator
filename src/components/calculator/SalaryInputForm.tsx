@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import type { SalaryInput, SalaryCalculationResult } from '../../types/salary';
-import { useSalaryCalculator } from '../../hooks/useSalaryCalculator';
-import { Card } from '../common/Card';
-import { Input } from '../common/Input';
-import { Button } from '../common/Button';
-import { AllowanceInputSection } from './AllowanceInputSection';
-import { OvertimeInputSection } from './OvertimeInputSection';
-import { BonusInputSection } from './BonusInputSection';
-import { CalculationResults } from './CalculationResults';
+import React, { useState } from "react";
+import type { SalaryInput, SalaryCalculationResult } from "../../types/salary";
+import { useSalaryCalculator } from "../../hooks/useSalaryCalculator";
+import { Card } from "../common/Card";
+import { Input } from "../common/Input";
+import { Button } from "../common/Button";
+import { AllowanceInputSection } from "./AllowanceInputSection";
+import { OvertimeInputSection } from "./OvertimeInputSection";
+import { BonusInputSection } from "./BonusInputSection";
+import { CalculationResults } from "./CalculationResults";
 
 interface SalaryInputFormProps {
   onSave?: (input: SalaryInput, result: SalaryCalculationResult, name: string) => void;
@@ -23,7 +23,7 @@ export const SalaryInputForm: React.FC<SalaryInputFormProps> = ({ onSave }) => {
   });
 
   const [result, setResult] = useState<SalaryCalculationResult | null>(null);
-  const [patternName, setPatternName] = useState('');
+  const [patternName, setPatternName] = useState("");
 
   const { calculate } = useSalaryCalculator();
 
@@ -34,9 +34,9 @@ export const SalaryInputForm: React.FC<SalaryInputFormProps> = ({ onSave }) => {
 
   const handleSavePattern = () => {
     if (result && onSave) {
-      const name = patternName || `パターン${new Date().toLocaleString('ja-JP')}`;
+      const name = patternName || `パターン${new Date().toLocaleString("ja-JP")}`;
       onSave(input, result, name);
-      setPatternName('');
+      setPatternName("");
       alert(`パターン「${name}」を保存しました`);
     }
   };
@@ -73,7 +73,9 @@ export const SalaryInputForm: React.FC<SalaryInputFormProps> = ({ onSave }) => {
             summerBonus={input.summerBonus}
             winterBonus={input.winterBonus}
             baseSalary={input.baseSalary}
-            onChange={(summer, winter) => setInput({ ...input, summerBonus: summer, winterBonus: winter })}
+            onChange={(summer, winter) =>
+              setInput({ ...input, summerBonus: summer, winterBonus: winter })
+            }
           />
 
           <Button variant="primary" onClick={handleCalculate} className="w-full py-3 text-lg">

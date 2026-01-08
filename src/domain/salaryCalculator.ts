@@ -1,7 +1,7 @@
-import type { SalaryCalculationResult, SalaryInput } from '../types/salary';
-import { LEGAL_WORKING_HOURS_PER_MONTH, OVERTIME_RATE } from '../utils/constants';
-import { calculateSocialInsurance } from './insuranceCalculator';
-import { calculateIncomeTax, calculateResidentTax, calculateTaxableIncome } from './taxCalculator';
+import type { SalaryCalculationResult, SalaryInput } from "../types/salary";
+import { LEGAL_WORKING_HOURS_PER_MONTH, OVERTIME_RATE } from "../utils/constants";
+import { calculateSocialInsurance } from "./insuranceCalculator";
+import { calculateIncomeTax, calculateResidentTax, calculateTaxableIncome } from "./taxCalculator";
 
 export const calculateHourlyRate = (baseSalary: number): number => {
   return baseSalary / LEGAL_WORKING_HOURS_PER_MONTH;
@@ -28,7 +28,8 @@ export const calculateSalary = (input: SalaryInput, age: number = 35): SalaryCal
   const annualBonus = calculateAnnualBonus(input);
 
   const hourlyRate = calculateHourlyRate(input.baseSalary);
-  const annualOvertimePay = calculateMonthlyOvertimePay(hourlyRate, input.expectedOvertimeHours) * 12;
+  const annualOvertimePay =
+    calculateMonthlyOvertimePay(hourlyRate, input.expectedOvertimeHours) * 12;
 
   const annualTotalIncome = annualGrossSalary + annualBonus;
 

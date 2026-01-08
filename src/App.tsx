@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { SalaryInputForm } from './components/calculator/SalaryInputForm';
-import { ComparisonTable } from './components/comparison/ComparisonTable';
-import { useComparisonPatterns } from './hooks/useComparisonPatterns';
+import { useState } from "react";
+import { SalaryInputForm } from "./components/calculator/SalaryInputForm";
+import { ComparisonTable } from "./components/comparison/ComparisonTable";
+import { useComparisonPatterns } from "./hooks/useComparisonPatterns";
 
 function App() {
-  const [activeTab, setActiveTab] = useState<'calculator' | 'comparison'>('calculator');
+  const [activeTab, setActiveTab] = useState<"calculator" | "comparison">("calculator");
   const { patterns, addPattern, removePattern } = useComparisonPatterns();
 
   return (
@@ -22,26 +22,26 @@ function App() {
         <div className="container mx-auto px-4">
           <nav className="flex space-x-8" aria-label="Tabs">
             <button
-              onClick={() => setActiveTab('calculator')}
+              onClick={() => setActiveTab("calculator")}
               className={`
                 py-4 px-1 border-b-2 font-medium text-sm transition-colors
                 ${
-                  activeTab === 'calculator'
-                    ? 'border-primary-500 text-primary-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  activeTab === "calculator"
+                    ? "border-primary-500 text-primary-600"
+                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
                 }
               `}
             >
               💰 計算
             </button>
             <button
-              onClick={() => setActiveTab('comparison')}
+              onClick={() => setActiveTab("comparison")}
               className={`
                 py-4 px-1 border-b-2 font-medium text-sm transition-colors relative
                 ${
-                  activeTab === 'comparison'
-                    ? 'border-primary-500 text-primary-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  activeTab === "comparison"
+                    ? "border-primary-500 text-primary-600"
+                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
                 }
               `}
             >
@@ -58,8 +58,10 @@ function App() {
 
       {/* メインコンテンツ */}
       <main className="container mx-auto px-4 py-8">
-        {activeTab === 'calculator' && <SalaryInputForm onSave={addPattern} />}
-        {activeTab === 'comparison' && <ComparisonTable patterns={patterns} onRemove={removePattern} />}
+        {activeTab === "calculator" && <SalaryInputForm onSave={addPattern} />}
+        {activeTab === "comparison" && (
+          <ComparisonTable patterns={patterns} onRemove={removePattern} />
+        )}
       </main>
 
       {/* フッター */}

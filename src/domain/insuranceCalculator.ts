@@ -1,6 +1,10 @@
-import { INSURANCE_RATES } from '../utils/constants';
+import { INSURANCE_RATES } from "../utils/constants";
 
-export const calculateSocialInsurance = (monthlyGross: number, annualBonus: number, age: number = 35) => {
+export const calculateSocialInsurance = (
+  monthlyGross: number,
+  annualBonus: number,
+  age: number = 35,
+) => {
   const monthlyBase = monthlyGross * 12;
   const total = monthlyBase + annualBonus;
 

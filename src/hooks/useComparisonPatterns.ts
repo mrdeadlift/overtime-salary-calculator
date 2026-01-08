@@ -1,6 +1,6 @@
-import { useState, useCallback } from 'react';
-import type { ComparisonPattern } from '../types/comparison';
-import type { SalaryInput, SalaryCalculationResult } from '../types/salary';
+import { useState, useCallback } from "react";
+import type { ComparisonPattern } from "../types/comparison";
+import type { SalaryInput, SalaryCalculationResult } from "../types/salary";
 
 export const useComparisonPatterns = () => {
   const [patterns, setPatterns] = useState<ComparisonPattern[]>([]);
@@ -15,7 +15,7 @@ export const useComparisonPatterns = () => {
       };
       setPatterns((prev) => [...prev, pattern]);
     },
-    []
+    [],
   );
 
   const removePattern = useCallback((id: string) => {

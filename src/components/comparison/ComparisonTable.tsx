@@ -1,8 +1,8 @@
-import React from 'react';
-import type { ComparisonPattern } from '../../types/comparison';
-import { formatCurrency } from '../../utils/formatters';
-import { Card } from '../common/Card';
-import { Button } from '../common/Button';
+import React from "react";
+import type { ComparisonPattern } from "../../types/comparison";
+import { formatCurrency } from "../../utils/formatters";
+import { Card } from "../common/Card";
+import { Button } from "../common/Button";
 
 interface ComparisonTableProps {
   patterns: ComparisonPattern[];

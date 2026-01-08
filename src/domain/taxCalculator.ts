@@ -1,4 +1,4 @@
-import { BASIC_DEDUCTION, INCOME_TAX_BRACKETS } from '../utils/constants';
+import { BASIC_DEDUCTION, INCOME_TAX_BRACKETS } from "../utils/constants";
 
 export const calculateEmploymentIncomeDeduction = (annualIncome: number): number => {
   if (annualIncome <= 1625000) return 550000;

@@ -25,8 +25,7 @@ export const Button: React.FC<ButtonProps> = ({
       "bg-primary-600 text-black hover:bg-primary-700 focus:ring-primary-500 disabled:bg-primary-300",
     secondary:
       "bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-500 disabled:bg-gray-100",
-    danger:
-      "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500 disabled:bg-red-300",
+    danger: "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500 disabled:bg-red-300",
   };
 
   const sizeStyles = {
